@@ -25,7 +25,7 @@ namespace Client
 
         private void btnSend_Click_1(object sender, EventArgs e)
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Tcp);
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipadd = IPAddress.Parse(tbIPHost.Text);
             int port = Convert.ToInt32(tbPort.Text);
             IPEndPoint ipend = new IPEndPoint(ipadd, port);
