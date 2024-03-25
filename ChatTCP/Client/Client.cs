@@ -13,27 +13,36 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class Form1 : Form
+    public partial class Client : Form
     {
         private Socket socket;
 
-        Server server = new Server();
-        public Form1()
+        
+        public Client()
         {
             InitializeComponent();
         }
 
-        private void btnSend_Click_1(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipadd = IPAddress.Parse(tbIPHost.Text);
             int port = Convert.ToInt32(tbPort.Text);
             IPEndPoint ipend = new IPEndPoint(ipadd, port);
 
-            Byte[] sendBytes = Encoding.UTF8.GetBytes(rtbMessage.Text);
-            socket.SendTo(sendBytes, ipend);
+            try
+            {
+                socket.Connect(ipend); // Kết nối đến máy chủ
+                Byte[] sendBytes = Encoding.UTF8.GetBytes(tbName.Text + " : " + rtbMessage.Text);
+                socket.Send(sendBytes); // Gửi dữ liệu đã mã hóa đến máy chủ
+                rtbMessage.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi kết nối đến máy chủ: " + ex.Message);
+            }
 
-            rtbMessage.Text = "";
         }
     }
 }
