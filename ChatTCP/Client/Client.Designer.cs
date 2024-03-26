@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.rtbMessage = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.tbMessage = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // tbIPHost
@@ -90,13 +91,13 @@
             // 
             this.rtbMessage.Location = new System.Drawing.Point(53, 170);
             this.rtbMessage.Name = "rtbMessage";
-            this.rtbMessage.Size = new System.Drawing.Size(602, 242);
+            this.rtbMessage.Size = new System.Drawing.Size(613, 180);
             this.rtbMessage.TabIndex = 3;
             this.rtbMessage.Text = "";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(672, 170);
+            this.button1.Location = new System.Drawing.Point(691, 380);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 41);
             this.button1.TabIndex = 4;
@@ -104,11 +105,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tbMessage
+            // 
+            this.tbMessage.Location = new System.Drawing.Point(53, 382);
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.Size = new System.Drawing.Size(613, 39);
+            this.tbMessage.TabIndex = 5;
+            this.tbMessage.Text = "";
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rtbMessage);
             this.Controls.Add(this.label3);
@@ -118,7 +128,7 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbIPHost);
             this.Name = "Client";
-            this.Text = "Client";
+            this.Text = "Client";           
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +144,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox rtbMessage;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox tbMessage;
     }
 }
 

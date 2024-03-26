@@ -40,40 +40,29 @@ namespace Server
 
         public void serverListen()
         {
-            // Create server by using IP endpoint
             IPAddress ipadd = IPAddress.Parse(tbIPServer.Text);
             int port = Convert.ToInt32(tbPort.Text);
             IPEndPoint ipend = new IPEndPoint(ipadd, port);
             server = new TcpListener(ipend);
-            // Start the server
             server.Start();
-            // Define listen thread
             listen = new Thread(() => {
                 try
                 {
                     while (true)
                     {
-                        // Create client connect to server
                         TcpClient client = server.AcceptTcpClient();
-                        // Get data from client
                         NetworkStream stream = client.GetStream();                       
-                        // Create array to store encoded message
                         byte[] buffer = new byte[1024];
-                        // Count bytes in stream
                         int bytesRead = stream.Read(buffer, 0, buffer.Length);
-                        // Encode bytes array to get perfect message
-                        string Data = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                        // Show message
+                        string Data = Encoding.UTF8.GetString(buffer, 0, bytesRead);                        
                         UpdateTextThreadSafe(Data, rtbView);
                     }
-                    // Handle when program catches exception
                 }
                 catch (SocketException)
                 {
 
                 }
             });
-            // Start listen thread
             listen.Start();
         }
 
